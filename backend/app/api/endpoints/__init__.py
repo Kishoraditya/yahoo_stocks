@@ -1,2 +1,2 @@
-from .stocks import *
+from .stock import *
 from .users import *
