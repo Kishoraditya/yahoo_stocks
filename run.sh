@@ -24,7 +24,7 @@ sleep 5
 mkdir -p backend frontend
 touch backend/.env frontend/.env
 echo "SECRET_KEY=ZZFW5NfM5qSxLNVP547oJHQ4TvsjAJLlwgAAraOKZbw
-DATABASE_URL=postgresql://yahoo_stocks:yahoo_stocks@db/yahoo_stocks
+DATABASE_URL=postgresql://postgres.gduumudpioseljvbgdlq:[YOUR-PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
 API_KEY_YAHOO_FINANCE=gnTsEpxy6j9WtNSPGdxsl9c4MFGsBGZ9nC2yawGc" > backend/.env
 echo "REACT_APP_API_URL=http://localhost:8000/api" > frontend/.env
 echo "Directories and environment files created."
@@ -37,9 +37,8 @@ echo "Waiting for containers to start..."
 sleep 60
 
 # Step 5: Check if containers are running (10 seconds)
-if [ "$(docker ps -q -f name=yahoo_stocks_db_1)" ] && \
-   [ "$(docker ps -q -f name=yahoo_stocks_backend_1)" ] && \
-   [ "$(docker ps -q -f name=yahoo_stocks_frontend_1)" ]; then
+if [ "$(docker ps -q -f name=stockinsights_backend_1)" ] && \
+   [ "$(docker ps -q -f name=stockinsights_frontend_1)" ]; then
     echo "All containers are running successfully."
 else
     echo "Error: Not all containers are running. Please check Docker logs for more information."

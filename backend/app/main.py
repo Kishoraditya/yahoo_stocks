@@ -4,6 +4,15 @@ from app.core.config import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
-app.include_router(user.router, prefix="/users", tags=["users"])
-app.include_router(stock.router, prefix="/stocks", tags=["stocks"])
 
+from fastapi import FastAPI
+from app.core.config import settings
+from app.api.api_v1.api import api_router
+
+
+
+app.include_router(api_router, prefix=settings.API_V1_STR)
+
+@app.get("/")
+def root():
+    return {"message": "Welcome to StockInsights API"}
